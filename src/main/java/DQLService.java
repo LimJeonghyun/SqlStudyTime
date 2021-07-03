@@ -3,8 +3,8 @@ import java.util.*;
 
 public class DQLService {
 
-    final String SELECTALL_SQL = "SELECT * FROM PERSON ";
-    final String SELECTBYNAME_SQL = "SELECT * FROM PERSON WHERE NAME = ? ";
+    final String SELECTALL_SQL = "SELECT * FROM STUDENT ";
+    final String SELECTBYNAME_SQL = "SELECT * FROM STUDENT WHERE NAME = ? ";
 
     Connection conn;
     PreparedStatement pstmt;
@@ -136,7 +136,7 @@ public class DQLService {
         }
 
         // 상세 데이터 출력
-        System.out.println("No Name ID Kor Eng Math Sum Avg Grade RegDate");
+        System.out.println("No Name Kor Eng Math Science Sum Avg Grade RegDate");
         System.out.println("==========================================");
 
         for(int i = 0; i < mapList.size(); i++) {
@@ -144,17 +144,17 @@ public class DQLService {
 
             int id = Integer.parseInt(map.get("ID").toString());
             String name = (String) map.get("NAME");
-            int studentId = Integer.parseInt(map.get("STUDENT").toString());
             int kor_score = Integer.parseInt(map.get("KOR_SCORE").toString());
             int eng_score = Integer.parseInt(map.get("ENG_SCORE").toString());
             int math_score = Integer.parseInt(map.get("MATH_SCORE").toString());
+            int science_score = Integer.parseInt(map.get("SCIENCE_SCORE").toString());
             String grade = (String) map.get("GRADE");
             String reg_date = (String) map.get("REG_DATE");
 
-            int sum = kor_score + eng_score + math_score;
-            double avg = sum / 3;
+            int sum = kor_score + eng_score + math_score + science_score;
+            double avg = sum / 4;
 
-            System.out.println(id + ". " + name + " " + studentId + "  " + kor_score + "  " + eng_score + "  " + math_score + "  " + sum + " " + avg + "  " + grade + "   " + reg_date);
+            System.out.println(id + ". " + name + "  " + kor_score + "  " + eng_score + "  " + math_score + "  " + science_score + "  " + sum + " " + avg + "  " + grade + "   " + reg_date);
         }
     }
 }

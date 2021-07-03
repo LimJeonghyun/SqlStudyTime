@@ -4,27 +4,27 @@ public class Person {
     private int korScore;
     private int engScore;
     private int mathScore;
+    private int scienceScore;
     private String grade;
     private String regDate;
-    private int studentId;
 
-    public Person(int num, String name, int studentId,  int korScore, int engScore, int mathScore, String grade, String regDate) {
+    public Person(int num, String name, int korScore, int engScore, int mathScore, int scienceScore, String grade, String regDate) {
         this.num = num;
         this.name = name;
         this.korScore = korScore;
         this.engScore = engScore;
         this.mathScore = mathScore;
+        this.scienceScore = scienceScore;
         this.grade = grade;
         this.regDate = regDate;
-        this.studentId = studentId;
     }
 
     private int sum(){
-        return this.korScore + this.engScore + this.mathScore;
+        return this.korScore + this.engScore + this.mathScore +  this.scienceScore;
     }
 
-    public static String calculateGrade(int korScore, int engScore, int mathScore){
-        int sum = korScore + engScore + mathScore;
+    public static String calculateGrade(int korScore, int engScore, int mathScore, int scienceScore){
+        int sum = korScore + engScore + mathScore + scienceScore;
         double avg = sum / 3;
 
         if(avg >= 95){
@@ -50,7 +50,7 @@ public class Person {
 
     @Override
     public String toString() {
-        return this.num+1 + ". " + this.name + " " +  this.studentId + " " + this.korScore + "  " + this.engScore + "  " + this.mathScore + "   " + sum() + "  " + sum()/3 + "   "  + this.grade + "     "  +this.regDate ;
+        return this.num+1 + ". " + this.name + " " +  this.korScore + "  " + this.engScore + "  " + this.mathScore + "  " + this.scienceScore + "   " + sum() + "  " + sum()/3 + "   "  + this.grade + "     "  +this.regDate ;
     }
 
     public int getNum() {
@@ -93,6 +93,14 @@ public class Person {
         this.mathScore = mathScore;
     }
 
+    public int getScienceScore() {
+        return scienceScore;
+    }
+
+    public void setScienceScore(int scienceScore) {
+        this.scienceScore = scienceScore;
+    }
+
     public String getRegDate() {
         return regDate;
     }
@@ -107,13 +115,5 @@ public class Person {
 
     public void setGrade(String grade) {
         this.grade = grade;
-    }
-
-    public int getStudentId() {
-        return studentId;
-    }
-
-    public void setStudentId(int studentId) {
-        this.studentId = studentId;
     }
 }

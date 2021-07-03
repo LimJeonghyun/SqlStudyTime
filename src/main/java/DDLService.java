@@ -1,18 +1,16 @@
-import java.sql.Connection;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 
 public class DDLService {
 
-    final String TABLE_NAME = "PERSON";
+    final String TABLE_NAME = "STUDENT";
 
     final String CREATE_SQL = "CREATE TABLE IF NOT EXISTS " + TABLE_NAME +" (  "
             + "  ID  INTEGER  PRIMARY KEY  AUTOINCREMENT, "
             + "  NAME     TEXT     NOT NULL,  "
-            + "  STUDENT     INTEGER     NOT NULL,  "
             + "  KOR_SCORE     INTEGER     NOT NULL, "
             + "  ENG_SCORE     INTEGER     NOT NULL, "
             + "  MATH_SCORE     INTEGER     NOT NULL, "
+            + "  SCIENCE_SCORE     INTEGER     NOT NULL, "
             + "  GRADE     TEXT     NOT NULL, "
             + "  REG_DATE    TEXT     NOT NULL  )";
 
@@ -82,3 +80,4 @@ public class DDLService {
 //    }
 
 }
+

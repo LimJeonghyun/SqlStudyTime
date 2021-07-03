@@ -20,10 +20,10 @@ public class CrudService {
 
         int num;
         String name;
-        int studentId;
         int korScore;
         int engScore;
         int mathScore;
+        int scienceScore;
         String grade;
         String regDate;
 
@@ -34,9 +34,6 @@ public class CrudService {
             br = new BufferedReader(new InputStreamReader(System.in));
             name = br.readLine();
             dataMap.put("NAME"   , name);
-            System.out.println("학번 입력");
-            studentId = Integer.parseInt(br.readLine());
-            dataMap.put("STUDENT"   , studentId);
             System.out.println("국어 성적 입력");
             korScore = Integer.parseInt(br.readLine());
             dataMap.put("KOR_SCORE"   , korScore);
@@ -46,7 +43,10 @@ public class CrudService {
             System.out.println("수학 성적 입력");
             mathScore = Integer.parseInt(br.readLine());
             dataMap.put("MATH_SCORE" , mathScore);
-            grade = Person.calculateGrade(korScore, engScore, mathScore);
+            System.out.println("과학 성적 입력");
+            scienceScore = Integer.parseInt(br.readLine());
+            dataMap.put("SCIENCE_SCORE" , scienceScore);
+            grade = Person.calculateGrade(korScore, engScore, mathScore,scienceScore);
             dataMap.put("GRADE" , grade);
         } catch (IOException e) {
             e.printStackTrace();
@@ -65,10 +65,10 @@ public class CrudService {
 
         int num;
         String name;
-        int studentId;
         int korScore;
         int engScore;
         int mathScore;
+        int scienceScore;
         String grade;
         String regDate;
 
@@ -84,9 +84,6 @@ public class CrudService {
             System.out.println("이름 입력");
             name = br.readLine();
             updateMap.put("NAME"   , name);
-            System.out.println("학번 입력");
-            studentId = Integer.parseInt(br.readLine());
-            updateMap.put("STUDENT"   , studentId);
             System.out.println("국어 성적 입력");
             korScore = Integer.parseInt(br.readLine());
             updateMap.put("KOR_SCORE"   , korScore);
@@ -99,7 +96,11 @@ public class CrudService {
             mathScore = Integer.parseInt(br.readLine());
             updateMap.put("MATH_SCORE" , mathScore);
 
-            grade = Person.calculateGrade(korScore, engScore, mathScore);
+            System.out.println("과학 성적 입력");
+            scienceScore = Integer.parseInt(br.readLine());
+            updateMap.put("SCIENCE_SCORE" , scienceScore);
+
+            grade = Person.calculateGrade(korScore, engScore, mathScore, scienceScore);
             updateMap.put("GRADE" , grade);
 
             LocalDate date = LocalDate.now();

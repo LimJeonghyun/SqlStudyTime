@@ -6,9 +6,9 @@ import java.util.Map;
 
 public class DMLService {
 
-    final String INSERT_SQL = "INSERT INTO PERSON ( NAME, STUDENT, KOR_SCORE, ENG_SCORE, MATH_SCORE, GRADE, REG_DATE) VALUES (?,?,?,?,?,?,?)";
-    final String UPDATE_SQL = "UPDATE PERSON SET NAME = ?, STUDENT = ?, KOR_SCORE = ?, ENG_SCORE = ?, MATH_SCORE = ?, GRADE = ? WHERE ID = ?";
-    final String DELETE_SQL = "DELETE FROM PERSON WHERE ID = ? ";
+    final String INSERT_SQL = "INSERT INTO STUDENT ( NAME, KOR_SCORE, ENG_SCORE, MATH_SCORE, SCIENCE_SCORE, GRADE, REG_DATE) VALUES ( ?,?,?,?,?,?,?)";
+    final String UPDATE_SQL = "UPDATE STUDENT SET NAME = ?, KOR_SCORE = ?, ENG_SCORE = ?, MATH_SCORE = ?, SCIENCE_SCORE = ?, GRADE = ? WHERE ID = ?";
+    final String DELETE_SQL = "DELETE FROM STUDENT WHERE ID = ? ";
 
     Connection conn;
     PreparedStatement pstmt;
@@ -28,10 +28,10 @@ public class DMLService {
 
             // 입력 데이터 매핑
             pstmt.setObject(1, dataMap.get("NAME"));
-            pstmt.setObject(2, dataMap.get("STUDENT"));
-            pstmt.setObject(3, dataMap.get("KOR_SCORE"));
-            pstmt.setObject(4, dataMap.get("ENG_SCORE"));
-            pstmt.setObject(5, dataMap.get("MATH_SCORE"));
+            pstmt.setObject(2, dataMap.get("KOR_SCORE"));
+            pstmt.setObject(3, dataMap.get("ENG_SCORE"));
+            pstmt.setObject(4, dataMap.get("MATH_SCORE"));
+            pstmt.setObject(5, dataMap.get("SCIENCE_SCORE"));
             pstmt.setObject(6, dataMap.get("GRADE"));
             pstmt.setObject(7, dataMap.get("REG_DATE"));
 
@@ -80,12 +80,13 @@ public class DMLService {
 
             // 입력 데이터 매핑
             pstmt.setObject(1, updateMap.get("NAME"));
-            pstmt.setObject(2, updateMap.get("STUDENT"));
-            pstmt.setObject(3, updateMap.get("KOR_SCORE"));
-            pstmt.setObject(4, updateMap.get("ENG_SCORE"));
-            pstmt.setObject(5, updateMap.get("MATH_SCORE"));
+            pstmt.setObject(2, updateMap.get("KOR_SCORE"));
+            pstmt.setObject(3, updateMap.get("ENG_SCORE"));
+            pstmt.setObject(4, updateMap.get("MATH_SCORE"));
+            pstmt.setObject(5, updateMap.get("SCIENCE_SCORE"));
             pstmt.setObject(6, updateMap.get("GRADE"));
             pstmt.setObject(7, updateMap.get("updateID"));
+
 
             // 쿼리 실행
             pstmt.executeUpdate();
